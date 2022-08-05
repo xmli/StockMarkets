@@ -110,7 +110,7 @@ def DB_MarketPreInsert():
             cur.execute(sql_value)
             conn.commit()
             count += 1
-        print(str(symbol[0] + "更新了") + str(count) + "条数据(前复权）！")
+        print(str(symbol[0] + "更新了") + str(count) + "条数据（前复权）！")
     print("前复权数据更新完毕！")
     conn.close()
 
