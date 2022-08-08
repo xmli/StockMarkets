@@ -1,15 +1,9 @@
-import time
-
 import requests
-from Stock import StockData
-import datetime
 
 
-def MarketData(symbol):
+def MarketData(symbol, begindate, enddate):
     MarketDict = {}
     for i in range(1, 5):
-        begindate = datetime.datetime.now().strftime("%Y%m%d")
-        enddate = datetime.datetime.now().strftime("%Y%m%d")
         url = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust="
 
@@ -23,11 +17,9 @@ def MarketData(symbol):
 
     return sorted(MarketDict.items(), key=lambda x: x[0])
 
-def MarketData_pre(symbol):
+def MarketData_pre(symbol, begindate, enddate):
     MarketDict_pre = {}
     for i in range(1, 5):
-        begindate = datetime.datetime.now().strftime("%Y%m%d")
-        enddate = datetime.datetime.now().strftime("%Y%m%d")
         url_pre = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust=pre"
 
@@ -42,11 +34,9 @@ def MarketData_pre(symbol):
     return sorted(MarketDict_pre.items(), key=lambda x: x[0])
 
 
-def MarketData_after(symbol):
+def MarketData_after(symbol, begindate, enddate):
     MarketDict_after = {}
     for i in range(1, 5):
-        begindate = datetime.datetime.now().strftime("%Y%m%d")
-        enddate = datetime.datetime.now().strftime("%Y%m%d")
         url_after = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust=after"
 

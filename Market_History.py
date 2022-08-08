@@ -1,15 +1,12 @@
-import time
-
 import requests
-from Stock import StockData
 import datetime
 
 
 def MarketData(symbol):
     MarketDict = {}
     for i in range(1, 5):
-        begindate = (datetime.datetime.now() - datetime.timedelta(days=+i * 3600)).strftime("%Y%m%d")
-        enddate = (datetime.datetime.now() - datetime.timedelta(days=+(i - 1) * 3600)).strftime("%Y%m%d")
+        begindate = (datetime.datetime.now() - datetime.timedelta(days=+1+i * 3600)).strftime("%Y%m%d")
+        enddate = (datetime.datetime.now() - datetime.timedelta(days=+1+(i - 1) * 3600)).strftime("%Y%m%d")
         url = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust="
 
@@ -26,8 +23,8 @@ def MarketData(symbol):
 def MarketData_pre(symbol):
     MarketDict_pre = {}
     for i in range(1, 5):
-        begindate = (datetime.datetime.now() - datetime.timedelta(days=+i * 3600)).strftime("%Y%m%d")
-        enddate = (datetime.datetime.now() - datetime.timedelta(days=+(i - 1) * 3600)).strftime("%Y%m%d")
+        begindate = (datetime.datetime.now() - datetime.timedelta(days=+1+i * 3600)).strftime("%Y%m%d")
+        enddate = (datetime.datetime.now() - datetime.timedelta(days=+1+(i - 1) * 3600)).strftime("%Y%m%d")
         url_pre = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust=pre"
 
@@ -45,8 +42,8 @@ def MarketData_pre(symbol):
 def MarketData_after(symbol):
     MarketDict_after = {}
     for i in range(1, 5):
-        begindate = (datetime.datetime.now() - datetime.timedelta(days=+i * 3600)).strftime("%Y%m%d")
-        enddate = (datetime.datetime.now() - datetime.timedelta(days=+(i - 1) * 3600)).strftime("%Y%m%d")
+        begindate = (datetime.datetime.now() - datetime.timedelta(days=+1+i * 3600)).strftime("%Y%m%d")
+        enddate = (datetime.datetime.now() - datetime.timedelta(days=+1+(i - 1) * 3600)).strftime("%Y%m%d")
         url_after = "https://api.gugudata.com/stock/cn?appkey=5F53E5XCZD2U&symbol=" + str(
             symbol) + "&begindate=" + begindate + "&enddate=" + enddate + "&adjust=after"
 

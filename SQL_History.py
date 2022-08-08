@@ -1,7 +1,7 @@
 from configparser import ConfigParser
-from Stock import StockData
 from Market_History import *
 import psycopg2
+from Stock import StockData
 
 config_parser = ConfigParser()
 config_parser.read("SQL.config")
@@ -10,7 +10,6 @@ config_parser.read("SQL.config")
 def DB_Connect():
     conn = psycopg2.connect(database="StockMarketDB", user="postgres", password="905718Lxm", host="127.0.0.1",
                             port="5432")
-
     return conn
 
 
@@ -82,7 +81,7 @@ def DB_MarketCreate():
     print("所有数据表创建完毕！共" + str(count) + "张表！")
 
 
-def DB_MarketInsert():
+def DB_HistoryMarketInsert():
     conn = DB_Connect()
     cur = conn.cursor()
     for symbol in DB_Stock():
@@ -95,12 +94,12 @@ def DB_MarketInsert():
             cur.execute(sql_value)
             conn.commit()
             count += 1
-        print(str(symbol[0] + "更新了") + str(count) + "条数据(不复权）！")
+        print(str(symbol[0] + "更新了") + str(count) + "条数据（不复权）！")
     print("不复权数据更新完毕！")
     conn.close()
 
 
-def DB_MarketPreInsert():
+def DB_HistoryMarketPreInsert():
     conn = DB_Connect()
     cur = conn.cursor()
     for symbol in DB_Stock():
@@ -115,7 +114,7 @@ def DB_MarketPreInsert():
     conn.close()
 
 
-def DB_MarketAfterInsert():
+def DB_HistoryMarketAfterInsert():
     conn = DB_Connect()
     cur = conn.cursor()
     for symbol in DB_Stock():
@@ -125,15 +124,6 @@ def DB_MarketAfterInsert():
             cur.execute(sql_value)
             conn.commit()
             count += 1
-        print(str(symbol[0] + "更新了") + str(count) + "条数据(后复权）！")
+        print(str(symbol[0] + "更新了") + str(count) + "条数据（后复权）！")
     print("前复权数据更新完毕！")
     conn.close()
-
-
-if __name__ == '__main__':
-    # DB_StockCreate()
-    # DB_StockInsert()
-    # DB_MarketCreate()
-    # DB_MarketInsert()
-    # DB_MarketPreInsert()
-    DB_MarketAfterInsert()
