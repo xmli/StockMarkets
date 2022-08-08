@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 from Stock import StockData
-from Market import *
+from Market_History import *
 import psycopg2
 
 config_parser = ConfigParser()
